@@ -77,10 +77,9 @@ func TestLanguageConvertSmoke(t *testing.T) {
 			e.CWD = filepath.Join(e.RootPath, "out")
 			e.RunCommand("pulumi", "stack", "init", "test")
 
-			// TODO[pulumi/pulumi#13075]: Skipping `up` until we have a way to tell the language host to
-			// install dependencies.
-			// e.RunCommand("pulumi", "up", "--yes")
-			// e.RunCommand("pulumi", "destroy", "--yes")
+			e.RunCommand("pulumi", "install")
+			e.RunCommand("pulumi", "up", "--yes")
+			e.RunCommand("pulumi", "destroy", "--yes")
 		})
 	}
 }
@@ -120,10 +119,9 @@ func TestLanguageConvertComponentSmoke(t *testing.T) {
 			e.CWD = filepath.Join(e.RootPath, "out")
 			e.RunCommand("pulumi", "stack", "init", "test")
 
-			// TODO[pulumi/pulumi#13075]: Skipping `up` until we have a way to tell the language host to
-			// install dependencies.
-			// e.RunCommand("pulumi", "up", "--yes")
-			// e.RunCommand("pulumi", "destroy", "--yes")
+			e.RunCommand("pulumi", "install")
+			e.RunCommand("pulumi", "up", "--yes")
+			e.RunCommand("pulumi", "destroy", "--yes")
 		})
 	}
 }
