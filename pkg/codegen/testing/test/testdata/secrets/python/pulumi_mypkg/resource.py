@@ -37,22 +37,40 @@ class ResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['ConfigArgs'],
-             config_array: pulumi.Input[Sequence[pulumi.Input['ConfigArgs']]],
-             config_map: pulumi.Input[Mapping[str, pulumi.Input['ConfigArgs']]],
-             foo: pulumi.Input[str],
-             foo_array: pulumi.Input[Sequence[pulumi.Input[str]]],
-             foo_map: pulumi.Input[Mapping[str, pulumi.Input[str]]],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'config' in kwargs:
+            config = kwargs['config']
+        if 'config' not in locals():
+            raise TypeError("Missing required property 'config'")
         if 'configArray' in kwargs:
             config_array = kwargs['configArray']
+        if 'config_array' in kwargs:
+            config_array = kwargs['config_array']
+        if 'config_array' not in locals():
+            raise TypeError("Missing required property 'config_array'")
         if 'configMap' in kwargs:
             config_map = kwargs['configMap']
+        if 'config_map' in kwargs:
+            config_map = kwargs['config_map']
+        if 'config_map' not in locals():
+            raise TypeError("Missing required property 'config_map'")
+        if 'foo' in kwargs:
+            foo = kwargs['foo']
+        if 'foo' not in locals():
+            raise TypeError("Missing required property 'foo'")
         if 'fooArray' in kwargs:
             foo_array = kwargs['fooArray']
+        if 'foo_array' in kwargs:
+            foo_array = kwargs['foo_array']
+        if 'foo_array' not in locals():
+            raise TypeError("Missing required property 'foo_array'")
         if 'fooMap' in kwargs:
             foo_map = kwargs['fooMap']
+        if 'foo_map' in kwargs:
+            foo_map = kwargs['foo_map']
+        if 'foo_map' not in locals():
+            raise TypeError("Missing required property 'foo_map'")
 
         _setter("config", config)
         _setter("config_array", config_array)

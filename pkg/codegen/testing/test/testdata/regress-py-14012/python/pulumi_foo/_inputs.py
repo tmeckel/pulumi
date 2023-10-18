@@ -26,10 +26,16 @@ class ProviderCertmanagerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mtls_cert_pem: pulumi.Input[str],
-             mtls_key_pem: pulumi.Input[str],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'mtls_cert_pem' in kwargs:
+            mtls_cert_pem = kwargs['mtls_cert_pem']
+        if 'mtls_cert_pem' not in locals():
+            raise TypeError("Missing required property 'mtls_cert_pem'")
+        if 'mtls_key_pem' in kwargs:
+            mtls_key_pem = kwargs['mtls_key_pem']
+        if 'mtls_key_pem' not in locals():
+            raise TypeError("Missing required property 'mtls_key_pem'")
 
         _setter("mtls_cert_pem", mtls_cert_pem)
         _setter("mtls_key_pem", mtls_key_pem)

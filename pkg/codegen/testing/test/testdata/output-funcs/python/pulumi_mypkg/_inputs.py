@@ -28,9 +28,12 @@ class BastionShareableLink:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vm: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'vm' in kwargs:
+            vm = kwargs['vm']
+        if 'vm' not in locals():
+            raise TypeError("Missing required property 'vm'")
 
         _setter("vm", vm)
 

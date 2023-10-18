@@ -37,9 +37,6 @@ class ComponentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             required_metadata: pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs'],
-             required_metadata_array: pulumi.Input[Sequence[pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs']]],
-             required_metadata_map: pulumi.Input[Mapping[str, pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs']]],
              metadata: Optional[pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs']] = None,
              metadata_array: Optional[pulumi.Input[Sequence[pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs']]]] = None,
              metadata_map: Optional[pulumi.Input[Mapping[str, pulumi.Input['pulumi_kubernetes.meta.v1.ObjectMetaArgs']]]] = None,
@@ -47,10 +44,22 @@ class ComponentArgs:
              **kwargs):
         if 'requiredMetadata' in kwargs:
             required_metadata = kwargs['requiredMetadata']
+        if 'required_metadata' in kwargs:
+            required_metadata = kwargs['required_metadata']
+        if 'required_metadata' not in locals():
+            raise TypeError("Missing required property 'required_metadata'")
         if 'requiredMetadataArray' in kwargs:
             required_metadata_array = kwargs['requiredMetadataArray']
+        if 'required_metadata_array' in kwargs:
+            required_metadata_array = kwargs['required_metadata_array']
+        if 'required_metadata_array' not in locals():
+            raise TypeError("Missing required property 'required_metadata_array'")
         if 'requiredMetadataMap' in kwargs:
             required_metadata_map = kwargs['requiredMetadataMap']
+        if 'required_metadata_map' in kwargs:
+            required_metadata_map = kwargs['required_metadata_map']
+        if 'required_metadata_map' not in locals():
+            raise TypeError("Missing required property 'required_metadata_map'")
         if 'metadataArray' in kwargs:
             metadata_array = kwargs['metadataArray']
         if 'metadataMap' in kwargs:

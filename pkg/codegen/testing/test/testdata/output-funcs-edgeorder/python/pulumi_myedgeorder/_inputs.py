@@ -36,12 +36,15 @@ class ConfigurationFilters:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hierarchy_information: 'HierarchyInformation',
              filterable_property: Optional[Sequence['FilterableProperty']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'hierarchyInformation' in kwargs:
             hierarchy_information = kwargs['hierarchyInformation']
+        if 'hierarchy_information' in kwargs:
+            hierarchy_information = kwargs['hierarchy_information']
+        if 'hierarchy_information' not in locals():
+            raise TypeError("Missing required property 'hierarchy_information'")
         if 'filterableProperty' in kwargs:
             filterable_property = kwargs['filterableProperty']
 
@@ -95,13 +98,16 @@ class CustomerSubscriptionDetails:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             quota_id: str,
              location_placement_id: Optional[str] = None,
              registered_features: Optional[Sequence['CustomerSubscriptionRegisteredFeatures']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'quotaId' in kwargs:
             quota_id = kwargs['quotaId']
+        if 'quota_id' in kwargs:
+            quota_id = kwargs['quota_id']
+        if 'quota_id' not in locals():
+            raise TypeError("Missing required property 'quota_id'")
         if 'locationPlacementId' in kwargs:
             location_placement_id = kwargs['locationPlacementId']
         if 'registeredFeatures' in kwargs:
@@ -221,12 +227,18 @@ class FilterableProperty:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             supported_values: Sequence[str],
-             type: Union[str, 'SupportedFilterTypes'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'supportedValues' in kwargs:
             supported_values = kwargs['supportedValues']
+        if 'supported_values' in kwargs:
+            supported_values = kwargs['supported_values']
+        if 'supported_values' not in locals():
+            raise TypeError("Missing required property 'supported_values'")
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
 
         _setter("supported_values", supported_values)
         _setter("type", type)

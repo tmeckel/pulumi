@@ -58,10 +58,13 @@ class ObjectWithNodeOptionalInputsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             foo: pulumi.Input[str],
              bar: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'foo' in kwargs:
+            foo = kwargs['foo']
+        if 'foo' not in locals():
+            raise TypeError("Missing required property 'foo'")
 
         _setter("foo", foo)
         if bar is not None:

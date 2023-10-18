@@ -137,7 +137,6 @@ class SsisEnvironmentResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
              description: Optional[str] = None,
              folder_id: Optional[float] = None,
              id: Optional[float] = None,
@@ -145,6 +144,10 @@ class SsisEnvironmentResponse(dict):
              variables: Optional[Sequence['outputs.SsisVariableResponse']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
         if 'folderId' in kwargs:
             folder_id = kwargs['folderId']
 
@@ -238,12 +241,15 @@ class SsisFolderResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
              description: Optional[str] = None,
              id: Optional[float] = None,
              name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
 
         _setter("type", 'Folder')
         if description is not None:
@@ -327,7 +333,6 @@ class SsisPackageResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
              description: Optional[str] = None,
              folder_id: Optional[float] = None,
              id: Optional[float] = None,
@@ -337,6 +342,10 @@ class SsisPackageResponse(dict):
              project_version: Optional[float] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
         if 'folderId' in kwargs:
             folder_id = kwargs['folderId']
         if 'projectId' in kwargs:
@@ -666,7 +675,6 @@ class SsisProjectResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
              description: Optional[str] = None,
              environment_refs: Optional[Sequence['outputs.SsisEnvironmentReferenceResponse']] = None,
              folder_id: Optional[float] = None,
@@ -676,6 +684,10 @@ class SsisProjectResponse(dict):
              version: Optional[float] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
         if 'environmentRefs' in kwargs:
             environment_refs = kwargs['environmentRefs']
         if 'folderId' in kwargs:
@@ -912,16 +924,28 @@ class StorageAccountKeyResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             key_name: str,
-             permissions: str,
-             value: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
+        if 'creation_time' in kwargs:
+            creation_time = kwargs['creation_time']
+        if 'creation_time' not in locals():
+            raise TypeError("Missing required property 'creation_time'")
         if 'keyName' in kwargs:
             key_name = kwargs['keyName']
+        if 'key_name' in kwargs:
+            key_name = kwargs['key_name']
+        if 'key_name' not in locals():
+            raise TypeError("Missing required property 'key_name'")
+        if 'permissions' in kwargs:
+            permissions = kwargs['permissions']
+        if 'permissions' not in locals():
+            raise TypeError("Missing required property 'permissions'")
+        if 'value' in kwargs:
+            value = kwargs['value']
+        if 'value' not in locals():
+            raise TypeError("Missing required property 'value'")
 
         _setter("creation_time", creation_time)
         _setter("key_name", key_name)

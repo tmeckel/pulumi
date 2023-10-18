@@ -30,12 +30,15 @@ class StaticPageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index_content: pulumi.Input[str],
              foo: Optional['FooArgs'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'indexContent' in kwargs:
             index_content = kwargs['indexContent']
+        if 'index_content' in kwargs:
+            index_content = kwargs['index_content']
+        if 'index_content' not in locals():
+            raise TypeError("Missing required property 'index_content'")
 
         _setter("index_content", index_content)
         if foo is not None:

@@ -26,10 +26,16 @@ class GetAmiIdsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'name' in kwargs:
+            name = kwargs['name']
+        if 'name' not in locals():
+            raise TypeError("Missing required property 'name'")
+        if 'values' in kwargs:
+            values = kwargs['values']
+        if 'values' not in locals():
+            raise TypeError("Missing required property 'values'")
 
         _setter("name", name)
         _setter("values", values)

@@ -41,16 +41,28 @@ class StorageAccountKeyResponseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             key_name: str,
-             permissions: str,
-             value: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
+        if 'creation_time' in kwargs:
+            creation_time = kwargs['creation_time']
+        if 'creation_time' not in locals():
+            raise TypeError("Missing required property 'creation_time'")
         if 'keyName' in kwargs:
             key_name = kwargs['keyName']
+        if 'key_name' in kwargs:
+            key_name = kwargs['key_name']
+        if 'key_name' not in locals():
+            raise TypeError("Missing required property 'key_name'")
+        if 'permissions' in kwargs:
+            permissions = kwargs['permissions']
+        if 'permissions' not in locals():
+            raise TypeError("Missing required property 'permissions'")
+        if 'value' in kwargs:
+            value = kwargs['value']
+        if 'value' not in locals():
+            raise TypeError("Missing required property 'value'")
 
         _setter("creation_time", creation_time)
         _setter("key_name", key_name)
@@ -103,10 +115,16 @@ class GetAmiIdsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'name' in kwargs:
+            name = kwargs['name']
+        if 'name' not in locals():
+            raise TypeError("Missing required property 'name'")
+        if 'values' in kwargs:
+            values = kwargs['values']
+        if 'values' not in locals():
+            raise TypeError("Missing required property 'values'")
 
         _setter("name", name)
         _setter("values", values)

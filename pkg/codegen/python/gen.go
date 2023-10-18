@@ -2594,6 +2594,7 @@ func (mod *modContext) genType(w io.Writer, name, comment string, properties []*
 		}
 		fmt.Fprintf(w, "        )\n")
 	}
+	inKwargs := map[string]struct{}{}
 
 	// Define method signature
 	fmt.Fprintf(w, "    @staticmethod\n")
@@ -2607,11 +2608,12 @@ func (mod *modContext) genType(w io.Writer, name, comment string, properties []*
 			ty = mod.typeString(codegen.OptionalType(prop), input, false /*acceptMapping*/)
 		}
 
-		var defaultValue string
+		// Required args will be captured by kwargs.
 		if !prop.IsRequired() || prop.DefaultValue != nil {
-			defaultValue = " = None"
+			fmt.Fprintf(w, "\n             %s: %s = None,", pname, ty)
+		} else {
+			inKwargs[pname] = struct{}{}
 		}
-		fmt.Fprintf(w, "\n             %s: %s%s,", pname, ty, defaultValue)
 	}
 	// Catch ResourceOptions being expanded by `**kwargs`.
 	fmt.Fprintf(w, "\n             opts: Optional[pulumi.ResourceOptions]=None,")
@@ -2622,10 +2624,20 @@ func (mod *modContext) genType(w io.Writer, name, comment string, properties []*
 
 	// Handle original property names. (i.e. propName -> prop_name)
 	for _, prop := range props {
-		if pname := PyName(prop.Name); pname != prop.Name {
-			// Original property name different from python name and could be in the kwargs.
+		pname := PyName(prop.Name)
+		// Original property name different from python name and could be in the kwargs.
+		if pname != prop.Name {
 			fmt.Fprintf(w, "        if '%s' in kwargs:\n", prop.Name)
 			fmt.Fprintf(w, "            %s = kwargs['%s']\n", pname, prop.Name)
+		}
+		if _, inKwargs := inKwargs[pname]; inKwargs {
+			fmt.Fprintf(w, "        if '%s' in kwargs:\n", pname)
+			fmt.Fprintf(w, "            %s = kwargs['%s']\n", pname, pname)
+		}
+		// Handle required argument not set.
+		if prop.IsRequired() && prop.DefaultValue == nil {
+			fmt.Fprintf(w, "        if '%s' not in locals():\n", pname)
+			fmt.Fprintf(w, "            raise TypeError(\"Missing required property '%s'\")\n", pname)
 		}
 	}
 	fmt.Fprintf(w, "\n")

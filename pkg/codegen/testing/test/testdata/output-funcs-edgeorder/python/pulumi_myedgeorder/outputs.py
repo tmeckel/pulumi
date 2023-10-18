@@ -54,17 +54,26 @@ class AvailabilityInformationResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_stage: str,
-             disabled_reason: str,
-             disabled_reason_message: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'availabilityStage' in kwargs:
             availability_stage = kwargs['availabilityStage']
+        if 'availability_stage' in kwargs:
+            availability_stage = kwargs['availability_stage']
+        if 'availability_stage' not in locals():
+            raise TypeError("Missing required property 'availability_stage'")
         if 'disabledReason' in kwargs:
             disabled_reason = kwargs['disabledReason']
+        if 'disabled_reason' in kwargs:
+            disabled_reason = kwargs['disabled_reason']
+        if 'disabled_reason' not in locals():
+            raise TypeError("Missing required property 'disabled_reason'")
         if 'disabledReasonMessage' in kwargs:
             disabled_reason_message = kwargs['disabledReasonMessage']
+        if 'disabled_reason_message' in kwargs:
+            disabled_reason_message = kwargs['disabled_reason_message']
+        if 'disabled_reason_message' not in locals():
+            raise TypeError("Missing required property 'disabled_reason_message'")
 
         _setter("availability_stage", availability_stage)
         _setter("disabled_reason", disabled_reason)
@@ -122,16 +131,28 @@ class BillingMeterDetailsResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             frequency: str,
-             meter_details: Any,
-             metering_type: str,
-             name: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'frequency' in kwargs:
+            frequency = kwargs['frequency']
+        if 'frequency' not in locals():
+            raise TypeError("Missing required property 'frequency'")
         if 'meterDetails' in kwargs:
             meter_details = kwargs['meterDetails']
+        if 'meter_details' in kwargs:
+            meter_details = kwargs['meter_details']
+        if 'meter_details' not in locals():
+            raise TypeError("Missing required property 'meter_details'")
         if 'meteringType' in kwargs:
             metering_type = kwargs['meteringType']
+        if 'metering_type' in kwargs:
+            metering_type = kwargs['metering_type']
+        if 'metering_type' not in locals():
+            raise TypeError("Missing required property 'metering_type'")
+        if 'name' in kwargs:
+            name = kwargs['name']
+        if 'name' not in locals():
+            raise TypeError("Missing required property 'name'")
 
         _setter("frequency", frequency)
         _setter("meter_details", meter_details)
@@ -213,29 +234,56 @@ class ConfigurationResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_information: 'outputs.AvailabilityInformationResponse',
-             cost_information: 'outputs.CostInformationResponse',
-             description: 'outputs.DescriptionResponse',
-             dimensions: 'outputs.DimensionsResponse',
-             display_name: str,
-             filterable_properties: Sequence['outputs.FilterablePropertyResponse'],
-             hierarchy_information: 'outputs.HierarchyInformationResponse',
-             image_information: Sequence['outputs.ImageInformationResponse'],
-             specifications: Sequence['outputs.SpecificationResponse'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'availabilityInformation' in kwargs:
             availability_information = kwargs['availabilityInformation']
+        if 'availability_information' in kwargs:
+            availability_information = kwargs['availability_information']
+        if 'availability_information' not in locals():
+            raise TypeError("Missing required property 'availability_information'")
         if 'costInformation' in kwargs:
             cost_information = kwargs['costInformation']
+        if 'cost_information' in kwargs:
+            cost_information = kwargs['cost_information']
+        if 'cost_information' not in locals():
+            raise TypeError("Missing required property 'cost_information'")
+        if 'description' in kwargs:
+            description = kwargs['description']
+        if 'description' not in locals():
+            raise TypeError("Missing required property 'description'")
+        if 'dimensions' in kwargs:
+            dimensions = kwargs['dimensions']
+        if 'dimensions' not in locals():
+            raise TypeError("Missing required property 'dimensions'")
         if 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if 'display_name' in kwargs:
+            display_name = kwargs['display_name']
+        if 'display_name' not in locals():
+            raise TypeError("Missing required property 'display_name'")
         if 'filterableProperties' in kwargs:
             filterable_properties = kwargs['filterableProperties']
+        if 'filterable_properties' in kwargs:
+            filterable_properties = kwargs['filterable_properties']
+        if 'filterable_properties' not in locals():
+            raise TypeError("Missing required property 'filterable_properties'")
         if 'hierarchyInformation' in kwargs:
             hierarchy_information = kwargs['hierarchyInformation']
+        if 'hierarchy_information' in kwargs:
+            hierarchy_information = kwargs['hierarchy_information']
+        if 'hierarchy_information' not in locals():
+            raise TypeError("Missing required property 'hierarchy_information'")
         if 'imageInformation' in kwargs:
             image_information = kwargs['imageInformation']
+        if 'image_information' in kwargs:
+            image_information = kwargs['image_information']
+        if 'image_information' not in locals():
+            raise TypeError("Missing required property 'image_information'")
+        if 'specifications' in kwargs:
+            specifications = kwargs['specifications']
+        if 'specifications' not in locals():
+            raise TypeError("Missing required property 'specifications'")
 
         _setter("availability_information", availability_information)
         _setter("cost_information", cost_information)
@@ -341,14 +389,20 @@ class CostInformationResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_info_url: str,
-             billing_meter_details: Sequence['outputs.BillingMeterDetailsResponse'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'billingInfoUrl' in kwargs:
             billing_info_url = kwargs['billingInfoUrl']
+        if 'billing_info_url' in kwargs:
+            billing_info_url = kwargs['billing_info_url']
+        if 'billing_info_url' not in locals():
+            raise TypeError("Missing required property 'billing_info_url'")
         if 'billingMeterDetails' in kwargs:
             billing_meter_details = kwargs['billingMeterDetails']
+        if 'billing_meter_details' in kwargs:
+            billing_meter_details = kwargs['billing_meter_details']
+        if 'billing_meter_details' not in locals():
+            raise TypeError("Missing required property 'billing_meter_details'")
 
         _setter("billing_info_url", billing_info_url)
         _setter("billing_meter_details", billing_meter_details)
@@ -403,20 +457,38 @@ class DescriptionResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes: Sequence[str],
-             description_type: str,
-             keywords: Sequence[str],
-             links: Sequence['outputs.LinkResponse'],
-             long_description: str,
-             short_description: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'attributes' in kwargs:
+            attributes = kwargs['attributes']
+        if 'attributes' not in locals():
+            raise TypeError("Missing required property 'attributes'")
         if 'descriptionType' in kwargs:
             description_type = kwargs['descriptionType']
+        if 'description_type' in kwargs:
+            description_type = kwargs['description_type']
+        if 'description_type' not in locals():
+            raise TypeError("Missing required property 'description_type'")
+        if 'keywords' in kwargs:
+            keywords = kwargs['keywords']
+        if 'keywords' not in locals():
+            raise TypeError("Missing required property 'keywords'")
+        if 'links' in kwargs:
+            links = kwargs['links']
+        if 'links' not in locals():
+            raise TypeError("Missing required property 'links'")
         if 'longDescription' in kwargs:
             long_description = kwargs['longDescription']
+        if 'long_description' in kwargs:
+            long_description = kwargs['long_description']
+        if 'long_description' not in locals():
+            raise TypeError("Missing required property 'long_description'")
         if 'shortDescription' in kwargs:
             short_description = kwargs['shortDescription']
+        if 'short_description' in kwargs:
+            short_description = kwargs['short_description']
+        if 'short_description' not in locals():
+            raise TypeError("Missing required property 'short_description'")
 
         _setter("attributes", attributes)
         _setter("description_type", description_type)
@@ -510,19 +582,40 @@ class DimensionsResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             depth: float,
-             height: float,
-             length: float,
-             length_height_unit: str,
-             weight: float,
-             weight_unit: str,
-             width: float,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'depth' in kwargs:
+            depth = kwargs['depth']
+        if 'depth' not in locals():
+            raise TypeError("Missing required property 'depth'")
+        if 'height' in kwargs:
+            height = kwargs['height']
+        if 'height' not in locals():
+            raise TypeError("Missing required property 'height'")
+        if 'length' in kwargs:
+            length = kwargs['length']
+        if 'length' not in locals():
+            raise TypeError("Missing required property 'length'")
         if 'lengthHeightUnit' in kwargs:
             length_height_unit = kwargs['lengthHeightUnit']
+        if 'length_height_unit' in kwargs:
+            length_height_unit = kwargs['length_height_unit']
+        if 'length_height_unit' not in locals():
+            raise TypeError("Missing required property 'length_height_unit'")
+        if 'weight' in kwargs:
+            weight = kwargs['weight']
+        if 'weight' not in locals():
+            raise TypeError("Missing required property 'weight'")
         if 'weightUnit' in kwargs:
             weight_unit = kwargs['weightUnit']
+        if 'weight_unit' in kwargs:
+            weight_unit = kwargs['weight_unit']
+        if 'weight_unit' not in locals():
+            raise TypeError("Missing required property 'weight_unit'")
+        if 'width' in kwargs:
+            width = kwargs['width']
+        if 'width' not in locals():
+            raise TypeError("Missing required property 'width'")
 
         _setter("depth", depth)
         _setter("height", height)
@@ -610,12 +703,18 @@ class FilterablePropertyResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             supported_values: Sequence[str],
-             type: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'supportedValues' in kwargs:
             supported_values = kwargs['supportedValues']
+        if 'supported_values' in kwargs:
+            supported_values = kwargs['supported_values']
+        if 'supported_values' not in locals():
+            raise TypeError("Missing required property 'supported_values'")
+        if 'type' in kwargs:
+            type = kwargs['type']
+        if 'type' not in locals():
+            raise TypeError("Missing required property 'type'")
 
         _setter("supported_values", supported_values)
         _setter("type", type)
@@ -742,14 +841,20 @@ class ImageInformationResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_type: str,
-             image_url: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'imageType' in kwargs:
             image_type = kwargs['imageType']
+        if 'image_type' in kwargs:
+            image_type = kwargs['image_type']
+        if 'image_type' not in locals():
+            raise TypeError("Missing required property 'image_type'")
         if 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
+        if 'image_url' in kwargs:
+            image_url = kwargs['image_url']
+        if 'image_url' not in locals():
+            raise TypeError("Missing required property 'image_url'")
 
         _setter("image_type", image_type)
         _setter("image_url", image_url)
@@ -792,14 +897,20 @@ class LinkResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             link_type: str,
-             link_url: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'linkType' in kwargs:
             link_type = kwargs['linkType']
+        if 'link_type' in kwargs:
+            link_type = kwargs['link_type']
+        if 'link_type' not in locals():
+            raise TypeError("Missing required property 'link_type'")
         if 'linkUrl' in kwargs:
             link_url = kwargs['linkUrl']
+        if 'link_url' in kwargs:
+            link_url = kwargs['link_url']
+        if 'link_url' not in locals():
+            raise TypeError("Missing required property 'link_url'")
 
         _setter("link_type", link_type)
         _setter("link_url", link_url)
@@ -849,18 +960,30 @@ class Pav2MeterDetailsResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_type: str,
-             charging_type: str,
-             meter_guid: str,
-             multiplier: float,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'billingType' in kwargs:
             billing_type = kwargs['billingType']
+        if 'billing_type' in kwargs:
+            billing_type = kwargs['billing_type']
+        if 'billing_type' not in locals():
+            raise TypeError("Missing required property 'billing_type'")
         if 'chargingType' in kwargs:
             charging_type = kwargs['chargingType']
+        if 'charging_type' in kwargs:
+            charging_type = kwargs['charging_type']
+        if 'charging_type' not in locals():
+            raise TypeError("Missing required property 'charging_type'")
         if 'meterGuid' in kwargs:
             meter_guid = kwargs['meterGuid']
+        if 'meter_guid' in kwargs:
+            meter_guid = kwargs['meter_guid']
+        if 'meter_guid' not in locals():
+            raise TypeError("Missing required property 'meter_guid'")
+        if 'multiplier' in kwargs:
+            multiplier = kwargs['multiplier']
+        if 'multiplier' not in locals():
+            raise TypeError("Missing required property 'multiplier'")
 
         _setter("billing_type", 'Pav2')
         _setter("charging_type", charging_type)
@@ -940,30 +1063,54 @@ class ProductFamilyResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_information: 'outputs.AvailabilityInformationResponse',
-             cost_information: 'outputs.CostInformationResponse',
-             description: 'outputs.DescriptionResponse',
-             display_name: str,
-             filterable_properties: Sequence['outputs.FilterablePropertyResponse'],
-             hierarchy_information: 'outputs.HierarchyInformationResponse',
-             image_information: Sequence['outputs.ImageInformationResponse'],
-             product_lines: Sequence['outputs.ProductLineResponse'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'availabilityInformation' in kwargs:
             availability_information = kwargs['availabilityInformation']
+        if 'availability_information' in kwargs:
+            availability_information = kwargs['availability_information']
+        if 'availability_information' not in locals():
+            raise TypeError("Missing required property 'availability_information'")
         if 'costInformation' in kwargs:
             cost_information = kwargs['costInformation']
+        if 'cost_information' in kwargs:
+            cost_information = kwargs['cost_information']
+        if 'cost_information' not in locals():
+            raise TypeError("Missing required property 'cost_information'")
+        if 'description' in kwargs:
+            description = kwargs['description']
+        if 'description' not in locals():
+            raise TypeError("Missing required property 'description'")
         if 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if 'display_name' in kwargs:
+            display_name = kwargs['display_name']
+        if 'display_name' not in locals():
+            raise TypeError("Missing required property 'display_name'")
         if 'filterableProperties' in kwargs:
             filterable_properties = kwargs['filterableProperties']
+        if 'filterable_properties' in kwargs:
+            filterable_properties = kwargs['filterable_properties']
+        if 'filterable_properties' not in locals():
+            raise TypeError("Missing required property 'filterable_properties'")
         if 'hierarchyInformation' in kwargs:
             hierarchy_information = kwargs['hierarchyInformation']
+        if 'hierarchy_information' in kwargs:
+            hierarchy_information = kwargs['hierarchy_information']
+        if 'hierarchy_information' not in locals():
+            raise TypeError("Missing required property 'hierarchy_information'")
         if 'imageInformation' in kwargs:
             image_information = kwargs['imageInformation']
+        if 'image_information' in kwargs:
+            image_information = kwargs['image_information']
+        if 'image_information' not in locals():
+            raise TypeError("Missing required property 'image_information'")
         if 'productLines' in kwargs:
             product_lines = kwargs['productLines']
+        if 'product_lines' in kwargs:
+            product_lines = kwargs['product_lines']
+        if 'product_lines' not in locals():
+            raise TypeError("Missing required property 'product_lines'")
 
         _setter("availability_information", availability_information)
         _setter("cost_information", cost_information)
@@ -1078,28 +1225,52 @@ class ProductLineResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_information: 'outputs.AvailabilityInformationResponse',
-             cost_information: 'outputs.CostInformationResponse',
-             description: 'outputs.DescriptionResponse',
-             display_name: str,
-             filterable_properties: Sequence['outputs.FilterablePropertyResponse'],
-             hierarchy_information: 'outputs.HierarchyInformationResponse',
-             image_information: Sequence['outputs.ImageInformationResponse'],
-             products: Sequence['outputs.ProductResponse'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'availabilityInformation' in kwargs:
             availability_information = kwargs['availabilityInformation']
+        if 'availability_information' in kwargs:
+            availability_information = kwargs['availability_information']
+        if 'availability_information' not in locals():
+            raise TypeError("Missing required property 'availability_information'")
         if 'costInformation' in kwargs:
             cost_information = kwargs['costInformation']
+        if 'cost_information' in kwargs:
+            cost_information = kwargs['cost_information']
+        if 'cost_information' not in locals():
+            raise TypeError("Missing required property 'cost_information'")
+        if 'description' in kwargs:
+            description = kwargs['description']
+        if 'description' not in locals():
+            raise TypeError("Missing required property 'description'")
         if 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if 'display_name' in kwargs:
+            display_name = kwargs['display_name']
+        if 'display_name' not in locals():
+            raise TypeError("Missing required property 'display_name'")
         if 'filterableProperties' in kwargs:
             filterable_properties = kwargs['filterableProperties']
+        if 'filterable_properties' in kwargs:
+            filterable_properties = kwargs['filterable_properties']
+        if 'filterable_properties' not in locals():
+            raise TypeError("Missing required property 'filterable_properties'")
         if 'hierarchyInformation' in kwargs:
             hierarchy_information = kwargs['hierarchyInformation']
+        if 'hierarchy_information' in kwargs:
+            hierarchy_information = kwargs['hierarchy_information']
+        if 'hierarchy_information' not in locals():
+            raise TypeError("Missing required property 'hierarchy_information'")
         if 'imageInformation' in kwargs:
             image_information = kwargs['imageInformation']
+        if 'image_information' in kwargs:
+            image_information = kwargs['image_information']
+        if 'image_information' not in locals():
+            raise TypeError("Missing required property 'image_information'")
+        if 'products' in kwargs:
+            products = kwargs['products']
+        if 'products' not in locals():
+            raise TypeError("Missing required property 'products'")
 
         _setter("availability_information", availability_information)
         _setter("cost_information", cost_information)
@@ -1214,28 +1385,52 @@ class ProductResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_information: 'outputs.AvailabilityInformationResponse',
-             configurations: Sequence['outputs.ConfigurationResponse'],
-             cost_information: 'outputs.CostInformationResponse',
-             description: 'outputs.DescriptionResponse',
-             display_name: str,
-             filterable_properties: Sequence['outputs.FilterablePropertyResponse'],
-             hierarchy_information: 'outputs.HierarchyInformationResponse',
-             image_information: Sequence['outputs.ImageInformationResponse'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'availabilityInformation' in kwargs:
             availability_information = kwargs['availabilityInformation']
+        if 'availability_information' in kwargs:
+            availability_information = kwargs['availability_information']
+        if 'availability_information' not in locals():
+            raise TypeError("Missing required property 'availability_information'")
+        if 'configurations' in kwargs:
+            configurations = kwargs['configurations']
+        if 'configurations' not in locals():
+            raise TypeError("Missing required property 'configurations'")
         if 'costInformation' in kwargs:
             cost_information = kwargs['costInformation']
+        if 'cost_information' in kwargs:
+            cost_information = kwargs['cost_information']
+        if 'cost_information' not in locals():
+            raise TypeError("Missing required property 'cost_information'")
+        if 'description' in kwargs:
+            description = kwargs['description']
+        if 'description' not in locals():
+            raise TypeError("Missing required property 'description'")
         if 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if 'display_name' in kwargs:
+            display_name = kwargs['display_name']
+        if 'display_name' not in locals():
+            raise TypeError("Missing required property 'display_name'")
         if 'filterableProperties' in kwargs:
             filterable_properties = kwargs['filterableProperties']
+        if 'filterable_properties' in kwargs:
+            filterable_properties = kwargs['filterable_properties']
+        if 'filterable_properties' not in locals():
+            raise TypeError("Missing required property 'filterable_properties'")
         if 'hierarchyInformation' in kwargs:
             hierarchy_information = kwargs['hierarchyInformation']
+        if 'hierarchy_information' in kwargs:
+            hierarchy_information = kwargs['hierarchy_information']
+        if 'hierarchy_information' not in locals():
+            raise TypeError("Missing required property 'hierarchy_information'")
         if 'imageInformation' in kwargs:
             image_information = kwargs['imageInformation']
+        if 'image_information' in kwargs:
+            image_information = kwargs['image_information']
+        if 'image_information' not in locals():
+            raise TypeError("Missing required property 'image_information'")
 
         _setter("availability_information", availability_information)
         _setter("configurations", configurations)
@@ -1345,24 +1540,42 @@ class PurchaseMeterDetailsResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_type: str,
-             charging_type: str,
-             multiplier: float,
-             product_id: str,
-             sku_id: str,
-             term_id: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'billingType' in kwargs:
             billing_type = kwargs['billingType']
+        if 'billing_type' in kwargs:
+            billing_type = kwargs['billing_type']
+        if 'billing_type' not in locals():
+            raise TypeError("Missing required property 'billing_type'")
         if 'chargingType' in kwargs:
             charging_type = kwargs['chargingType']
+        if 'charging_type' in kwargs:
+            charging_type = kwargs['charging_type']
+        if 'charging_type' not in locals():
+            raise TypeError("Missing required property 'charging_type'")
+        if 'multiplier' in kwargs:
+            multiplier = kwargs['multiplier']
+        if 'multiplier' not in locals():
+            raise TypeError("Missing required property 'multiplier'")
         if 'productId' in kwargs:
             product_id = kwargs['productId']
+        if 'product_id' in kwargs:
+            product_id = kwargs['product_id']
+        if 'product_id' not in locals():
+            raise TypeError("Missing required property 'product_id'")
         if 'skuId' in kwargs:
             sku_id = kwargs['skuId']
+        if 'sku_id' in kwargs:
+            sku_id = kwargs['sku_id']
+        if 'sku_id' not in locals():
+            raise TypeError("Missing required property 'sku_id'")
         if 'termId' in kwargs:
             term_id = kwargs['termId']
+        if 'term_id' in kwargs:
+            term_id = kwargs['term_id']
+        if 'term_id' not in locals():
+            raise TypeError("Missing required property 'term_id'")
 
         _setter("billing_type", 'Purchase')
         _setter("charging_type", charging_type)
@@ -1442,10 +1655,16 @@ class SpecificationResponse(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'name' in kwargs:
+            name = kwargs['name']
+        if 'name' not in locals():
+            raise TypeError("Missing required property 'name'")
+        if 'value' in kwargs:
+            value = kwargs['value']
+        if 'value' not in locals():
+            raise TypeError("Missing required property 'value'")
 
         _setter("name", name)
         _setter("value", value)

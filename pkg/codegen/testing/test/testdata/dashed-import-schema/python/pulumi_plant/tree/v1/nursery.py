@@ -30,10 +30,13 @@ class NurseryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             varieties: pulumi.Input[Sequence[pulumi.Input['RubberTreeVariety']]],
              sizes: Optional[pulumi.Input[Mapping[str, pulumi.Input['TreeSize']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'varieties' in kwargs:
+            varieties = kwargs['varieties']
+        if 'varieties' not in locals():
+            raise TypeError("Missing required property 'varieties'")
 
         _setter("varieties", varieties)
         if sizes is not None:

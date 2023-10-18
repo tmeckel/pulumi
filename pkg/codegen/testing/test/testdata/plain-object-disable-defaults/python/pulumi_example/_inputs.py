@@ -40,13 +40,16 @@ class HelmReleaseSettings:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             required_arg: str,
              driver: Optional[str] = None,
              plugins_path: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'requiredArg' in kwargs:
             required_arg = kwargs['requiredArg']
+        if 'required_arg' in kwargs:
+            required_arg = kwargs['required_arg']
+        if 'required_arg' not in locals():
+            raise TypeError("Missing required property 'required_arg'")
         if 'pluginsPath' in kwargs:
             plugins_path = kwargs['pluginsPath']
 
@@ -118,13 +121,16 @@ class HelmReleaseSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             required_arg: pulumi.Input[str],
              driver: Optional[pulumi.Input[str]] = None,
              plugins_path: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'requiredArg' in kwargs:
             required_arg = kwargs['requiredArg']
+        if 'required_arg' in kwargs:
+            required_arg = kwargs['required_arg']
+        if 'required_arg' not in locals():
+            raise TypeError("Missing required property 'required_arg'")
         if 'pluginsPath' in kwargs:
             plugins_path = kwargs['pluginsPath']
 
@@ -276,7 +282,6 @@ class LayeredTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             other: pulumi.Input['HelmReleaseSettingsArgs'],
              thinker: Optional[pulumi.Input[str]] = None,
              answer: Optional[pulumi.Input[float]] = None,
              plain_other: Optional['HelmReleaseSettingsArgs'] = None,
@@ -284,6 +289,10 @@ class LayeredTypeArgs:
              recursive: Optional[pulumi.Input['LayeredTypeArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'other' in kwargs:
+            other = kwargs['other']
+        if 'other' not in locals():
+            raise TypeError("Missing required property 'other'")
         if 'plainOther' in kwargs:
             plain_other = kwargs['plainOther']
 

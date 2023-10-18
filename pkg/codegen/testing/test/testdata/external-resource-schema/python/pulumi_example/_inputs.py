@@ -37,9 +37,6 @@ class PetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             required_name: pulumi.Input['pulumi_random.RandomPet'],
-             required_name_array: pulumi.Input[Sequence[pulumi.Input['pulumi_random.RandomPet']]],
-             required_name_map: pulumi.Input[Mapping[str, pulumi.Input['pulumi_random.RandomPet']]],
              age: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input['pulumi_random.RandomPet']] = None,
              name_array: Optional[pulumi.Input[Sequence[pulumi.Input['pulumi_random.RandomPet']]]] = None,
@@ -48,10 +45,22 @@ class PetArgs:
              **kwargs):
         if 'requiredName' in kwargs:
             required_name = kwargs['requiredName']
+        if 'required_name' in kwargs:
+            required_name = kwargs['required_name']
+        if 'required_name' not in locals():
+            raise TypeError("Missing required property 'required_name'")
         if 'requiredNameArray' in kwargs:
             required_name_array = kwargs['requiredNameArray']
+        if 'required_name_array' in kwargs:
+            required_name_array = kwargs['required_name_array']
+        if 'required_name_array' not in locals():
+            raise TypeError("Missing required property 'required_name_array'")
         if 'requiredNameMap' in kwargs:
             required_name_map = kwargs['requiredNameMap']
+        if 'required_name_map' in kwargs:
+            required_name_map = kwargs['required_name_map']
+        if 'required_name_map' not in locals():
+            raise TypeError("Missing required property 'required_name_map'")
         if 'nameArray' in kwargs:
             name_array = kwargs['nameArray']
         if 'nameMap' in kwargs:

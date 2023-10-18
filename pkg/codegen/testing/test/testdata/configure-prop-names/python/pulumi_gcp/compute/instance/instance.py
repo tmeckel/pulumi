@@ -28,11 +28,14 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             boot_disk: pulumi.Input['_compute.instancebootdisk.InstanceBootDiskArgs'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'bootDisk' in kwargs:
             boot_disk = kwargs['bootDisk']
+        if 'boot_disk' in kwargs:
+            boot_disk = kwargs['boot_disk']
+        if 'boot_disk' not in locals():
+            raise TypeError("Missing required property 'boot_disk'")
 
         _setter("boot_disk", boot_disk)
 

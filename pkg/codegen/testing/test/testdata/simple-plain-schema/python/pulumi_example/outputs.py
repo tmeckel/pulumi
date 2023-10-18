@@ -34,14 +34,23 @@ class Foo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             a: bool,
-             c: int,
-             e: str,
              b: Optional[bool] = None,
              d: Optional[int] = None,
              f: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if 'a' in kwargs:
+            a = kwargs['a']
+        if 'a' not in locals():
+            raise TypeError("Missing required property 'a'")
+        if 'c' in kwargs:
+            c = kwargs['c']
+        if 'c' not in locals():
+            raise TypeError("Missing required property 'c'")
+        if 'e' in kwargs:
+            e = kwargs['e']
+        if 'e' not in locals():
+            raise TypeError("Missing required property 'e'")
 
         _setter("a", a)
         _setter("c", c)

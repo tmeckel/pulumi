@@ -28,11 +28,14 @@ class ReplicatedBucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_region: pulumi.Input[str],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
+        if 'destination_region' in kwargs:
+            destination_region = kwargs['destination_region']
+        if 'destination_region' not in locals():
+            raise TypeError("Missing required property 'destination_region'")
 
         _setter("destination_region", destination_region)
 

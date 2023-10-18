@@ -27,11 +27,14 @@ class RegistryGeoReplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group: pulumi.Input['pulumi_azure_native.resources.ResourceGroup'],
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
         if 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
+        if 'resource_group' in kwargs:
+            resource_group = kwargs['resource_group']
+        if 'resource_group' not in locals():
+            raise TypeError("Missing required property 'resource_group'")
 
         _setter("resource_group", resource_group)
 

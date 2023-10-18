@@ -36,7 +36,6 @@ class FooArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_kube_client_settings: pulumi.Input['KubeClientSettingsArgs'],
              argument: Optional[str] = None,
              kube_client_settings: Optional[pulumi.Input['KubeClientSettingsArgs']] = None,
              settings: Optional[pulumi.Input['LayeredTypeArgs']] = None,
@@ -44,6 +43,10 @@ class FooArgs:
              **kwargs):
         if 'backupKubeClientSettings' in kwargs:
             backup_kube_client_settings = kwargs['backupKubeClientSettings']
+        if 'backup_kube_client_settings' in kwargs:
+            backup_kube_client_settings = kwargs['backup_kube_client_settings']
+        if 'backup_kube_client_settings' not in locals():
+            raise TypeError("Missing required property 'backup_kube_client_settings'")
         if 'kubeClientSettings' in kwargs:
             kube_client_settings = kwargs['kubeClientSettings']
 
